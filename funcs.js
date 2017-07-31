@@ -183,6 +183,12 @@ module.exports = (bot) => {
 	}
 
 	bot.blacklist = function (id) {
+		var blacklistJson = fs.readFileSync("./blacklist.json"),
+			blacklist = JSON.parse(blacklistJson);
+		for(var i = 0; i < blacklist.length; i++) {
+			if(blacklist[i] == id)
+				return true;
+		}
 		return false;
 	}
 
