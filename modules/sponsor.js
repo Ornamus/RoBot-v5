@@ -24,8 +24,7 @@ module.exports = {
 				String.prototype.replaceAll = function(search, replacement) {
 					var target = this;
 					return target.replace(new RegExp(search, 'g'), replacement);
-				};
-			
+				};		
 		
 				var data = csv.toArrays(res)
 
@@ -34,8 +33,10 @@ module.exports = {
 					string = data[i][2];
 					string = string.replaceAll("/", " ")
 					string = string.replaceAll("and", " ")
+					string = string.replaceAll("&", " ")
+					string = " " + string + " ";
 					//console.log(string)
-					if (string.toLowerCase().includes(sponsor.toLowerCase() + " ") || string.toLowerCase().includes(" " + sponsor.toLowerCase())) {
+					if (string.toLowerCase().includes(" " + sponsor.toLowerCase() + " ")) {
 						var team = data[i][0].replace("frc", "")
 						if (sponsoredTeams == "None") {
 							sponsoredTeams = team
